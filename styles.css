@@ -28,32 +28,36 @@ body {
 }
 
 /* ===== Navigation ===== */
+/* ===== Navigation ===== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 14, 39, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-white);
-    padding: 0.5rem 0;
+    background: #0a0e27;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 2rem;
+    height: 100%;
+    position: relative;
 }
 
 .nav-left,
 .nav-right {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
 }
 
@@ -64,33 +68,52 @@ body {
 .nav-center {
     display: flex;
     justify-content: center;
+    position: static;
 }
 
 .navbar a {
     color: var(--text-white);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+.navbar a:not(.logo):not(.btn-book):hover {
     color: var(--orange-primary);
 }
 
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
 .logo img {
-    height: 70px;
-    width: auto;
-    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .btn-book {
-    border: 2px solid var(--text-white);
-    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--text-white);
+    padding: 0.8rem 2rem;
     border-radius: 0;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .btn-book:hover {
@@ -103,9 +126,10 @@ body {
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     overflow: hidden;
+    padding-bottom: 8rem;
 }
 
 .hero-background {
@@ -136,24 +160,25 @@ body {
 .hero-content {
     position: relative;
     z-index: 1;
-    text-align: center;
-    max-width: 900px;
-    padding: 2rem;
+    text-align: left;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 2rem;
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.1rem, 5.1vw, 3.8rem);
     font-weight: 400;
     letter-spacing: 3px;
     line-height: 1.2;
-    margin-bottom: 2rem;
+    margin-bottom: 1.7rem;
     color: var(--text-white);
 }
 
 .hero-content p {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.3vw, 0.95rem);
     line-height: 1.8;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: var(--text-light);
     font-weight: 300;
 }
@@ -161,7 +186,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -466,19 +491,23 @@ body {
 /* ===== Everything You Need Section ===== */
 .everything-section {
     position: relative;
-    min-height: 600px;
+    min-height: 700px;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; Removed to allow card offset */
+    padding: 4rem 2rem;
 }
 
 .everything-background {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 100%;
     z-index: 0;
+    border-radius: 40px;
+    overflow: hidden;
 }
 
 .everything-background img {
@@ -494,65 +523,78 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(10, 14, 39, 0.85) 0%, rgba(10, 14, 39, 0.7) 50%, rgba(10, 14, 39, 0.85) 100%);
+    background: rgba(10, 14, 39, 0.4);
 }
 
 .everything-content {
     position: relative;
     z-index: 1;
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    width: 100%;
+}
+
+.everything-card {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(60, 60, 60, 0.5) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(40%);
+}
+
+.everything-card-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    padding: 5rem 4rem;
     align-items: center;
-    width: 100%;
 }
 
 .everything-left {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .everything-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 400;
     letter-spacing: 2px;
-    line-height: 1.3;
+    line-height: 1.2;
     color: var(--text-white);
+    text-transform: uppercase;
 }
 
 .everything-title .highlight {
     color: var(--orange-primary);
-    font-weight: 500;
+    font-weight: 600;
+    display: block;
+    margin-top: 0.5rem;
 }
 
 .btn-outline-white {
     background: transparent;
-    border: 2px solid var(--text-white);
+    border: 1px solid var(--text-white);
     color: var(--text-white);
     padding: 1rem 2.5rem;
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     align-self: flex-start;
 }
 
 .btn-outline-white:hover {
     background: var(--text-white);
     color: var(--navy-dark);
-    transform: translateY(-2px);
 }
 
 .everything-right {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 2.5rem;
+    /* Styles removed as they are now handled by the card */
 }
 
 .everything-features {
@@ -562,15 +604,15 @@ body {
 .features-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2rem 0;
 }
 
 .features-list li {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.9);
-    padding: 0.6rem 0;
+    padding: 0.5rem 0;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
     line-height: 1.6;
 }
 
@@ -578,17 +620,44 @@ body {
     content: '○';
     position: absolute;
     left: 0;
-    color: var(--orange-primary);
-    font-size: 1.1rem;
+    color: #ff5722;
+    /* Ensuring orange color matches image */
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.5;
 }
 
 .features-description {
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+    .everything-card-content {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .everything-left {
+        align-items: center;
+    }
+
+    .btn-outline-white {
+        align-self: center;
+    }
+
+    .features-list li {
+        text-align: left;
+        display: inline-block;
+    }
+
+    .features-list {
+        text-align: left;
+    }
 }
 
 /* ===== Responsive Design ===== */
@@ -1175,13 +1244,37 @@ body {
 
 @media (max-width: 1024px) {
     .nav-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
     }
 
-    .nav-left,
-    .nav-right {
-        justify-content: center;
+    .nav-center {
+        order: -1;
+        /* Put logo first */
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+        border-radius: 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        /* Ensure it's visible */
     }
 
     .features-container {
@@ -1248,5 +1341,124 @@ body {
 
     .features {
         padding: 0 1rem 2rem;
+    }
+}
+
+/* Mobile Drawer & Navigation */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-white);
+    transition: all 0.3s ease;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--navy-dark);
+    z-index: 1100;
+    padding: 2rem;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-drawer.active {
+    left: 0;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.drawer-logo {
+    height: 50px;
+    width: auto;
+}
+
+.drawer-close {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.drawer-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.drawer-links a:hover {
+    color: var(--orange-primary);
+}
+
+.btn-book-mobile {
+    background-color: var(--orange-primary);
+    color: var(--text-white);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .nav-center {
+        order: -1;
     }
 }

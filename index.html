@@ -18,7 +18,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-left">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <div class="nav-left desktop-nav">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#event">Event</a>
@@ -28,11 +34,29 @@
                     <img src="assets/redland-logo.png" alt="Redland Fiesta">
                 </a>
             </div>
-            <div class="nav-right">
+            <div class="nav-right desktop-nav">
                 <a href="#gallery">Gallery</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
                 <a href="#book" class="btn-book">BOOK NOW</a>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="assets/redland-logo.png" alt="Redland Fiesta" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close">&times;</button>
+            </div>
+            <div class="drawer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#event">Event</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+                <a href="#book" class="btn-book-mobile">BOOK NOW</a>
             </div>
         </div>
     </nav>
@@ -40,7 +64,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background">
-            <img src="assets/hero.png" alt="Event celebration">
+            <img src="assets/bg2.png" alt="Event celebration">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -54,38 +78,41 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/bldg.png" alt="Spacious Hall">
-                </div>
-                <h3>Spacious & Elegant Hall</h3>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/calendar.png" alt="Custom Packages">
-                </div>
-                <h3>Custom Event Packages</h3>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/contact.png" alt="Professional Support">
-                </div>
-                <h3>Professional Event Support</h3>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/parking.png" alt="Ample Parking">
-                </div>
-                <h3>Ample Parking Available</h3>
-            </div>
-        </div>
-    </section>
+
     <!-- Venue Section -->
     <section class="venue">
         <div class="venue-container">
+
+            <!-- Features Section -->
+            <br></br>
+            <section class="features">
+                <div class="features-container">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="assets/bldg.png" alt="Spacious Hall">
+                        </div>
+                        <h3>Spacious & Elegant Hall</h3>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="assets/calendar.png" alt="Custom Packages">
+                        </div>
+                        <h3>Custom Event Packages</h3>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="assets/contact.png" alt="Professional Support">
+                        </div>
+                        <h3>Professional Event Support</h3>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="assets/parking.png" alt="Ample Parking">
+                        </div>
+                        <h3>Ample Parking Available</h3>
+                    </div>
+                </div>
+            </section>
             <h2 class="venue-title">A <span class="highlight">VENUE</span> DESIGNED FOR MEMORABLE CELEBRATIONS</h2>
             <div class="venue-content">
                 <div class="venue-image">
@@ -147,37 +174,45 @@
             </div>
         </div>
     </section>
-
+    <br></br>
     <!-- Everything You Need Section -->
     <section class="everything-section">
+
         <div class="everything-background">
+
             <img src="assets/dj.png" alt="DJ Equipment">
             <div class="everything-overlay"></div>
         </div>
         <div class="everything-content">
-            <div class="everything-left">
-                <h2 class="everything-title">EVERYTHING YOU NEED<br><span class="highlight">UNDER ONE ROOF</span></h2>
-                <button class="btn btn-outline-white">BOOK YOUR EVENT</button>
-            </div>
-            <div class="everything-right">
-                <div class="everything-features">
-                    <ul class="features-list">
-                        <li>Spacious dance floor</li>
-                        <li>Customizable seating arrangements</li>
-                        <li>Professional lighting & sound system</li>
-                        <li>Climate-controlled indoor hall</li>
-                        <li>Clean restrooms & guest facilities</li>
-                        <li>On-site parking convenience</li>
-                    </ul>
-                    <p class="features-description">
-                        Our banquet hall is thoughtfully equipped to provide comfort, style, and functionality for both
-                        hosts and guests.
-                    </p>
+            <div class="everything-card">
+                <div class="everything-card-content">
+                    <div class="everything-left">
+                        <h2 class="everything-title">EVERYTHING YOU NEED<br><span class="highlight">UNDER ONE
+                                ROOF</span></h2>
+                        <button class="btn btn-outline-white">BOOK YOUR EVENT</button>
+                    </div>
+                    <div class="everything-right">
+                        <div class="everything-features">
+                            <ul class="features-list">
+                                <li>Spacious dance floor</li>
+                                <li>Customizable seating arrangements</li>
+                                <li>Professional lighting & sound system</li>
+                                <li>Climate-controlled indoor hall</li>
+                                <li>Clean restrooms & guest facilities</li>
+                                <li>On-site parking convenience</li>
+                            </ul>
+                            <p class="features-description">
+                                Our banquet hall is thoughtfully equipped to provide comfort, style, and functionality
+                                for both
+                                hosts and guests.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    <br></br> <br></br>
     <!-- Feedback Section -->
     <section class="feedback">
         <div class="feedback-container">
