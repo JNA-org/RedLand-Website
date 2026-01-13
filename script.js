@@ -73,38 +73,40 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCarousel();
 });
 
-// ===== Mobile Menu Toggle =====
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+// ===== Mobile Drawer Toggle =====
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const mobileDrawer = document.getElementById('mobile-drawer');
+const navOverlay = document.getElementById('nav-overlay');
+const drawerCloseBtn = document.getElementById('drawer-close');
+const drawerLinks = document.querySelectorAll('.mobile-drawer a');
 
-mobileMenuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileMenuToggle.classList.toggle('active');
+function toggleDrawer() {
+    mobileDrawer.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    document.body.style.overflow = mobileDrawer.classList.contains('active') ? 'hidden' : '';
+}
 
-    // Animate hamburger icon
-    const spans = mobileMenuToggle.querySelectorAll('span');
-    if (mobileMenuToggle.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(8px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
-});
+function closeDrawer() {
+    mobileDrawer.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleDrawer);
+}
 
-        const spans = mobileMenuToggle.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    });
+if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', closeDrawer);
+}
+
+if (navOverlay) {
+    navOverlay.addEventListener('click', closeDrawer);
+}
+
+// Close drawer when clicking a link
+drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
 });
 
 // ===== Smooth Scroll for Navigation Links =====
@@ -219,32 +221,6 @@ style.textContent = `
         to {
         transform: translateX(400px);
         opacity: 0;
-    }
-}
-
-@media(max - width: 768px) {
-        .nav - links.active {
-        display: flex;
-        flex - direction: column;
-        position: absolute;
-        top: 100 %;
-        left: 0;
-        right: 0;
-        background: rgba(15, 23, 42, 0.98);
-        padding: 2rem;
-        border - bottom: 1px solid rgba(255, 255, 255, 0.1);
-        animation: slideDown 0.3s ease - out;
-    }
-
-    @keyframes slideDown {
-            from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-            to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 }
 `;
