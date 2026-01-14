@@ -1,6 +1,6 @@
 /* ===== CSS Variables ===== */
 :root {
-    --navy-dark: #0a0e27;
+    --navy-dark: #0A0524;
     --navy-medium: #141b3d;
     --orange-primary: #ff5722;
     --text-white: #ffffff;
@@ -35,7 +35,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: #0a0e27;
+    background: #0A0524;
     height: 90px;
     display: flex;
     align-items: center;
@@ -154,7 +154,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(10, 14, 39, 0.6), rgba(10, 14, 39, 0.8));
+    background: linear-gradient(to bottom, rgba(10, 5, 36, 0.6), rgba(10, 5, 36, 0.8));
 }
 
 .hero-content {
@@ -309,7 +309,7 @@ body {
 
 /* ===== Occasions Section ===== */
 .occasions {
-    background: linear-gradient(180deg, #0a0e27 0%, #141b3d 100%);
+    background: #0A0524;
     padding: 5rem 2rem;
 }
 
@@ -391,7 +391,7 @@ body {
 /* ===== Venue Section ===== */
 
 .venue {
-    background: linear-gradient(180deg, #0a0e27 0%, #141b3d 100%);
+    background: #0A0524;
     padding: 5rem 2rem;
 }
 
@@ -494,8 +494,8 @@ body {
     min-height: 700px;
     display: flex;
     align-items: center;
-    /* overflow: hidden; Removed to allow card offset */
-    padding: 4rem 2rem;
+    /* overflow: hidden; Removed to allow card offset on desktop */
+    padding: 4rem 2rem 0;
 }
 
 .everything-background {
@@ -523,7 +523,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 14, 39, 0.4);
+    background: rgba(10, 5, 36, 0.4);
 }
 
 .everything-content {
@@ -534,7 +534,7 @@ body {
     width: 100%;
 }
 
-.everything-card {
+.everything-card-final {
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(60, 60, 60, 0.5) 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -542,7 +542,12 @@ body {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transform: translateY(40%);
+}
+
+@media (min-width: 901px) {
+    .everything-card-final {
+        transform: translateY(40%);
+    }
 }
 
 .everything-card-content {
@@ -635,11 +640,29 @@ body {
 }
 
 @media (max-width: 900px) {
+    .everything-section {
+        display: block;
+        min-height: auto;
+        padding: 4rem 1.5rem 6rem 1.5rem;
+    }
+
+    .everything-background {
+        width: 100%;
+        border-radius: 0;
+        height: 100%;
+        position: absolute;
+    }
+
     .everything-card-content {
         grid-template-columns: 1fr;
         padding: 3rem 2rem;
         gap: 2rem;
         text-align: center;
+    }
+
+    .everything-card-final {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 
     .everything-left {
@@ -664,9 +687,90 @@ body {
 /* Feedback Section */
 .feedback {
     padding: 6rem 2rem;
-    background: linear-gradient(to bottom, #0a0e27 0%, #141b3d 100%);
+    background: #0A0524;
+    /* Deep dark background */
     position: relative;
     overflow: hidden;
+}
+
+/* ===== Global Atmospheric Glow ===== */
+.bg-blur {
+    position: absolute;
+    border-radius: 50%;
+    background: #E1412A;
+    filter: blur(150px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+    mix-blend-mode: screen;
+}
+
+.blur-lg {
+    width: 600px;
+    height: 600px;
+    filter: blur(150px);
+}
+
+.blur-md {
+    width: 480px;
+    height: 480px;
+    filter: blur(120px);
+}
+
+.blur-sm {
+    width: 300px;
+    height: 300px;
+    filter: blur(80px);
+}
+
+.opacity-2 {
+    opacity: 0.2;
+}
+
+.opacity-1 {
+    opacity: 0.1;
+}
+
+.opacity-05 {
+    opacity: 0.05;
+}
+
+/* Feedback specific overrides (preserving existing layout) */
+.feedback-blur {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: #E1412A;
+    filter: blur(150px);
+    opacity: 0.15;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.feedback-blur.secondary {
+    width: 480px;
+    /* 20% smaller than 600px */
+    height: 480px;
+    top: 10%;
+    left: 10%;
+    opacity: 0.1;
+    filter: blur(120px);
+}
+
+.feedback-blur.tertiary {
+    width: 480px;
+    /* 20% smaller than 600px */
+    height: 480px;
+    bottom: -10%;
+    right: 5%;
+    left: auto;
+    transform: none;
+    opacity: 0.08;
+    filter: blur(120px);
 }
 
 .feedback-container {
@@ -682,8 +786,15 @@ body {
 }
 
 .feedback-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 0;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.feedback-title .highlight {
+    color: #E1412A;
+    font-weight: 500;
 }
 
 .carousel-controls {
@@ -692,27 +803,27 @@ body {
 }
 
 .carousel-btn {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 87, 34, 0.3);
+    border: 1px solid #E1412A;
     background: transparent;
-    color: var(--primary-accent);
+    color: #E1412A;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-btn:hover {
-    background: var(--primary-accent);
+    background: #E1412A;
     color: white;
-    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(225, 65, 42, 0.3);
 }
 
-.carousel-btn.active {
-    background: var(--primary-accent);
+.carousel-btn.carousel-next {
+    background: #E1412A;
     color: white;
 }
 
@@ -729,20 +840,20 @@ body {
 
 .testimonial-card {
     flex: 0 0 calc(33.333% - 1.33rem);
-    background: rgba(20, 27, 61, 0.6);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 5, 36, 0.3);
+    backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 2rem;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 87, 34, 0.3);
+    background: rgba(10, 5, 36, 0.5);
+    border-color: rgba(225, 65, 42, 0.2);
 }
 
 .testimonial-header {
@@ -772,44 +883,42 @@ body {
 
 /* Colors for specific avatars to match design variants */
 .testimonial-card:nth-child(1) .user-avatar {
-    background: #5D4037;
+    background: #60342a;
 }
 
-/* Warm brown/red */
 .testimonial-card:nth-child(2) .user-avatar {
-    background: #3E2723;
+    background: #3e2621;
 }
 
-/* Dark brown */
 .testimonial-card:nth-child(3) .user-avatar {
-    background: #4a3434;
+    background: #4a2c2c;
 }
-
-/* Muted red */
 
 .user-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
+    color: #ffffff;
 }
 
 .testimonial-text {
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.9);
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
     flex-grow: 1;
+    font-size: 0.95rem;
 }
 
 .star-rating {
     display: flex;
     gap: 0.2rem;
-    color: #ffb700;
-    font-size: 1.2rem;
+    color: #f7a000;
+    font-size: 1.1rem;
 }
 
 /* Booking Section */
 .booking {
     padding: 6rem 2rem;
-    background: #0a0e27;
+    background: #0A0524;
     position: relative;
 }
 
@@ -880,7 +989,7 @@ body {
 
 /* ===== Footer Section ===== */
 .footer {
-    background: #05081a;
+    background: #050212;
     color: #ffffff;
     padding: 5rem 0 0;
     font-size: 0.95rem;
@@ -1082,7 +1191,7 @@ body {
 }
 
 .form-group select option {
-    background: #0a0e27;
+    background: #0A0524;
     color: white;
 }
 
